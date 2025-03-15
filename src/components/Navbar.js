@@ -9,8 +9,8 @@ function Navbar() {
   
   return (
     <header className="header">
-      <div className="logo">Your Logo</div>
-      
+      <img src="/images/logo.png" alt="Eventlty Logo" className="nav-logo"/>
+
       {/* Hamburger Menu Button */}
       <div className="hamburger" onClick={toggleMenu}>
         <span></span>
@@ -19,10 +19,10 @@ function Navbar() {
       </div>
       
       <nav className={`nav ${menuOpen ? 'active' : ''}`}>
-        <li><a href="#">Home</a></li>
+        <a href="#">Home</a>
         <a href="#">Religious Event</a>
         <a href="#">Sponsers For Event</a>
-        <li><a href="#">Wall of Love</a></li>
+        <a href="#">Wall of Love</a>
       </nav>
       
       <div className={`buttons ${menuOpen ? 'active' : ''}`}>
