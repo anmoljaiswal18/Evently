@@ -9,4 +9,5 @@ export default defineConfig({
     outDir: "build/client",  // Ensure this matches your expected path
     manifest: true,          // Generates manifest.json
   },
+  base: './',
 });
