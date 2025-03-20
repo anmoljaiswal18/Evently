@@ -6,12 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   build: {
-    outDir: "dist", 
-    emptyOutDir: true, // Ensures old files are deleted
-    rollupOptions: {
-      output: {
-        dir: "dist",
-      },
-    },
+    outDir: "build/client",  // Ensure this matches your expected path
+    manifest: true,          // Generates manifest.json
   },
 });
