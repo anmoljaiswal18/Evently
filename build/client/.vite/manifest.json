@@ -1,0 +1,54 @@
+{
+  "_chunk-GNGMS2XR-BOZvdQC0.js": {
+    "file": "assets/chunk-GNGMS2XR-BOZvdQC0.js",
+    "name": "chunk-GNGMS2XR"
+  },
+  "_index-puSMihhB.js": {
+    "file": "assets/index-puSMihhB.js",
+    "name": "index",
+    "imports": [
+      "_chunk-GNGMS2XR-BOZvdQC0.js"
+    ]
+  },
+  "_with-props-D1pAlVEB.js": {
+    "file": "assets/with-props-D1pAlVEB.js",
+    "name": "with-props",
+    "imports": [
+      "_chunk-GNGMS2XR-BOZvdQC0.js"
+    ]
+  },
+  "app/root.tsx?__react-router-build-client-route": {
+    "file": "assets/root-BUC-NNNi.js",
+    "name": "root",
+    "src": "app/root.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-D1pAlVEB.js",
+      "_chunk-GNGMS2XR-BOZvdQC0.js"
+    ],
+    "css": [
+      "assets/root-BD1l95Op.css"
+    ]
+  },
+  "app/routes/home.tsx?__react-router-build-client-route": {
+    "file": "assets/home-BV16Kwoq.js",
+    "name": "home",
+    "src": "app/routes/home.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-D1pAlVEB.js",
+      "_chunk-GNGMS2XR-BOZvdQC0.js",
+      "_index-puSMihhB.js"
+    ]
+  },
+  "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx": {
+    "file": "assets/entry.client-Bum_W0TX.js",
+    "name": "entry.client",
+    "src": "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx",
+    "isEntry": true,
+    "imports": [
+      "_chunk-GNGMS2XR-BOZvdQC0.js",
+      "_index-puSMihhB.js"
+    ]
+  }
+}
