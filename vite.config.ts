@@ -6,6 +6,12 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   build: {
-    outDir: 'dist'  // Ensure the output is in 'dist'
-  }
+    outDir: "dist", 
+    emptyOutDir: true, // Ensures old files are deleted
+    rollupOptions: {
+      output: {
+        dir: "dist",
+      },
+    },
+  },
 });
