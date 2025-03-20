@@ -1,13 +1,23 @@
+
+import HeroSection from "~/HeroSection";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import Navbar from "~/Navbar";
+import Footer from "~/Footer";
+
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Evently" },
+    { name: "Evently", content: "Welcome to Evently" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <>
+     <Navbar/>
+     <HeroSection/>
+     <Footer/>
+    </>
+  )
 }
