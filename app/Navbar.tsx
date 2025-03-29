@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+import Registration from "./Registration"; // Ensure the correct path
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false); // New state for modal
 
   return (
     <header className="fixed top-0 left-0 w-full bg-blue-600 shadow-md z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="/home" className="text-lg font-semibold text-gray-900">
+        <Link to="/" className="text-lg font-semibold text-gray-900">
           <img src="/images/logo.png" alt="Evently Logo" className="h-10 w-auto" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-x-8">
-          <a href="#" className="text-white hover:text-yellow-400">Home</a>
-          <a href="#" className="text-white hover:text-yellow-400">Religious Event</a>
-          <a href="#" className="text-white hover:text-yellow-400">Sponsors For Event</a>
-          <a href="#" className="text-white hover:text-yellow-400">Wall of Love</a>
+          <Link to="/" className="text-white hover:text-yellow-400">Home</Link>
+          <Link to="/" className="text-white hover:text-yellow-400">Religious Event</Link>
+          <Link to="/" className="text-white hover:text-yellow-400">Sponsors For Event</Link>
+          <Link to="/" className="text-white hover:text-yellow-400">Wall of Love</Link>
         </nav>
 
         {/* Buttons */}
         <div className="hidden lg:flex gap-x-4">
-          <a href="#" className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
+          <button onClick={() => setIsRegistrationOpen(true)} className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
             List Your Event
-          </a>
-          <a href="#" className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
+          </button>
+          <button onClick={() => setIsRegistrationOpen(true)} className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
             Find Your Event
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -44,19 +47,29 @@ const Navbar = () => {
             <XMarkIcon className="h-8 w-8 text-black" />
           </button>
           <nav className="flex flex-col space-y-4">
-            <a href="#" className="text-white hover:text-yellow-400">Home</a>
-            <a href="#" className="text-white hover:text-yellow-400">Religious Event</a>
-            <a href="#" className="text-white hover:text-yellow-400">Sponsors For Event</a>
-            <a href="#" className="text-white hover:text-yellow-400">Wall of Love</a>
+            <Link to="/" className="text-white hover:text-yellow-400">Home</Link>
+            <Link to="/" className="text-white hover:text-yellow-400">Religious Event</Link>
+            <Link to="/" className="text-white hover:text-yellow-400">Sponsors For Event</Link>
+            <Link to="/" className="text-white hover:text-yellow-400">Wall of Love</Link>
           </nav>
           <div className="mt-auto flex flex-col gap-2">
-            <a href="#" className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
+            <button onClick={() => setIsRegistrationOpen(true)} className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
               List Your Event
-            </a>
-            <a href="#" className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
+            </button>
+            <button onClick={() => setIsRegistrationOpen(true)} className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-blue-800 hover:text-white">
               Find Your Event
-            </a>
+            </button>
           </div>
+        </div>
+      </Dialog>
+
+      {/* Registration Modal */}
+      <Dialog open={isRegistrationOpen} onClose={() => setIsRegistrationOpen(false)} className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+          <button onClick={() => setIsRegistrationOpen(false)} className="absolute top-2 right-2">
+            <XMarkIcon className="h-6 w-6 text-black" />
+          </button>
+          <Registration />
         </div>
       </Dialog>
     </header>
