@@ -47,7 +47,7 @@ export default function AuthPage() {
             <input
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
               type="email"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-gray-50"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black"
               placeholder="example@email.com"
             />
             {errors.email && <p className="text-red-500 text-sm">Valid email is required</p>}
@@ -58,7 +58,7 @@ export default function AuthPage() {
             <input
               {...register("password", { required: true, minLength: 6 })}
               type="password"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-gray-50"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black"
               placeholder="••••••••"
             />
             {errors.password && <p className="text-red-500 text-sm">Min 6 characters required</p>}
