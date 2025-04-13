@@ -7,24 +7,25 @@ interface EventData {
   price: number;
   startDate: string;
   endDate: string;
-  image: File | null;
+  image: string; // 🔄 now it's a base64 string
   city: string;
   state: string;
   interest: string;
 }
 
 export default function EventUpload() {
-  const [formData, setFormData] = useState<EventData>({
+  const [formData, setFormData] = useState<Omit<EventData, "image">>({
     name: "",
     description: "",
     price: 0,
     startDate: "",
     endDate: "",
-    image: null,
     city: "",
     state: "",
     interest: "",
   });
+
+  const [imageBase64, setImageBase64] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,19 +36,43 @@ export default function EventUpload() {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]; // ✅ Safe check for null
+    const file = e.target.files?.[0];
     if (file) {
-      setFormData((prev) => ({
-        ...prev,
-        image: file,
-      }));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setImageBase64(base64String);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Event Data Submitted:", formData);
-    alert("Event uploaded successfully!");
+
+    const dataToSend: EventData = {
+      ...formData,
+      image: imageBase64,
+    };
+
+    try {
+      const res = await fetch("/api/uploadEvent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToSend),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert("✅ " + result.message);
+      } else {
+        alert("❌ Upload failed: " + result.error);
+      }
+    } catch (error) {
+      console.error("Error uploading event:", error);
+      alert("❌ Error uploading event.");
+    }
   };
 
   return (

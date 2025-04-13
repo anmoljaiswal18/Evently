@@ -2,18 +2,53 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { v4 as uuidv4 } from "uuid"; // ✅ Import UUID
 
 export default function AuthPage() {
   const [isRegister, setIsRegister] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    alert(isRegister ? "Registered Successfully!" : "Logged In Successfully!");
+  const onSubmit = async (data: any) => {
+    if (isRegister) {
+      const userId = uuidv4();
+  
+      const newUser = {
+        ...data,
+        userId,
+      };
+  
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const res = await fetch(`${apiUrl}/api/auth/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        });
+        const result = await res.json();
+  
+        if (res.ok) {
+          alert("✅ Registered Successfully!\nYour User ID: " + result.userId);
+        } else {
+          alert("❌ Error: " + result.error);
+        }
+      } catch (err) {
+        console.error("Registration Error:", err);
+        alert("❌ Something went wrong while registering.");
+      }
+    } else {
+      // For now, simple login (you can connect login API later)
+      alert("✅ Logged In Successfully!");
+    }
+  
+    reset();
   };
 
   return (
@@ -35,7 +70,7 @@ export default function AuthPage() {
               <input
                 {...register("name", { required: isRegister })}
                 type="text"
-                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-gray-50"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black"
                 placeholder="John Doe"
               />
               {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
@@ -47,7 +82,7 @@ export default function AuthPage() {
             <input
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
               type="email"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black text-white"
               placeholder="example@email.com"
             />
             {errors.email && <p className="text-red-500 text-sm">Valid email is required</p>}
@@ -58,7 +93,7 @@ export default function AuthPage() {
             <input
               {...register("password", { required: true, minLength: 6 })}
               type="password"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black"
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 bg-black text-white"
               placeholder="••••••••"
             />
             {errors.password && <p className="text-red-500 text-sm">Min 6 characters required</p>}

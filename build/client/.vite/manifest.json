@@ -1,54 +1,54 @@
 {
-  "_chunk-GNGMS2XR-BOZvdQC0.js": {
-    "file": "assets/chunk-GNGMS2XR-BOZvdQC0.js",
+  "_chunk-GNGMS2XR-0G9Tdv0P.js": {
+    "file": "assets/chunk-GNGMS2XR-0G9Tdv0P.js",
     "name": "chunk-GNGMS2XR"
   },
-  "_index-puSMihhB.js": {
-    "file": "assets/index-puSMihhB.js",
+  "_index-7e9fipYT.js": {
+    "file": "assets/index-7e9fipYT.js",
     "name": "index",
     "imports": [
-      "_chunk-GNGMS2XR-BOZvdQC0.js"
+      "_chunk-GNGMS2XR-0G9Tdv0P.js"
     ]
   },
-  "_with-props-D1pAlVEB.js": {
-    "file": "assets/with-props-D1pAlVEB.js",
+  "_with-props-D4Ihdlvy.js": {
+    "file": "assets/with-props-D4Ihdlvy.js",
     "name": "with-props",
     "imports": [
-      "_chunk-GNGMS2XR-BOZvdQC0.js"
+      "_chunk-GNGMS2XR-0G9Tdv0P.js"
     ]
   },
   "app/root.tsx?__react-router-build-client-route": {
-    "file": "assets/root-BUC-NNNi.js",
+    "file": "assets/root-wogObhQ7.js",
     "name": "root",
     "src": "app/root.tsx?__react-router-build-client-route",
     "isEntry": true,
     "imports": [
-      "_with-props-D1pAlVEB.js",
-      "_chunk-GNGMS2XR-BOZvdQC0.js"
+      "_with-props-D4Ihdlvy.js",
+      "_chunk-GNGMS2XR-0G9Tdv0P.js"
     ],
     "css": [
-      "assets/root-BD1l95Op.css"
+      "assets/root-Cu6DxnEB.css"
     ]
   },
   "app/routes/home.tsx?__react-router-build-client-route": {
-    "file": "assets/home-BV16Kwoq.js",
+    "file": "assets/home-B-uhGmbG.js",
     "name": "home",
     "src": "app/routes/home.tsx?__react-router-build-client-route",
     "isEntry": true,
     "imports": [
-      "_with-props-D1pAlVEB.js",
-      "_chunk-GNGMS2XR-BOZvdQC0.js",
-      "_index-puSMihhB.js"
+      "_with-props-D4Ihdlvy.js",
+      "_chunk-GNGMS2XR-0G9Tdv0P.js",
+      "_index-7e9fipYT.js"
     ]
   },
   "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx": {
-    "file": "assets/entry.client-Bum_W0TX.js",
+    "file": "assets/entry.client-CGaoSQJ_.js",
     "name": "entry.client",
     "src": "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx",
     "isEntry": true,
     "imports": [
-      "_chunk-GNGMS2XR-BOZvdQC0.js",
-      "_index-puSMihhB.js"
+      "_chunk-GNGMS2XR-0G9Tdv0P.js",
+      "_index-7e9fipYT.js"
     ]
   }
 }
